@@ -1,3 +1,15 @@
+import { useVehicles } from '../store/vehicles';
+
 export const AuctionCarList = () => {
-  return <div>Hello List</div>;
+  const { vehicles } = useVehicles();
+
+  return (
+    <div>
+      {vehicles.map((vehicle, index) => (
+        <div key={vehicle.licensePlate}>
+          {index} - {vehicle.make} - {vehicle.startingBid}
+        </div>
+      ))}
+    </div>
+  );
 };
