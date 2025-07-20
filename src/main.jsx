@@ -2,14 +2,14 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router';
-import App from './App.jsx'
+import { AuctionCarList } from './pages/AuctionCarList';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<div>ola</div>} />
+          <Route path="/" element={<AuctionCarList />} />
         </Routes>
     </BrowserRouter>
   </StrictMode>,
-)
+);
