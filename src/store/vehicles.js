@@ -2,7 +2,7 @@ import { useStore } from './useStore';
 
 const ORDER = { ASC: 1, DSC: -1 };
 
-export const useVehicles = ({ pagination = {}, filters = {}, sort = {} }) => {
+export const useVehicles = (pagination = {}, filters = {}, sort = {}) => {
   const { store } = useStore();
 
   const allVehicles = store.vehicles || [];
@@ -13,8 +13,11 @@ export const useVehicles = ({ pagination = {}, filters = {}, sort = {} }) => {
         return false;
       }
 
+      if (key === 'favourite') return vehicle[key];
+
       if (
         key !== 'startingBid' &&
+        key !== 'favourite' &&
         filters[key] &&
         vehicle[key] !== filters[key]
       ) {
@@ -25,13 +28,13 @@ export const useVehicles = ({ pagination = {}, filters = {}, sort = {} }) => {
   });
 
   const sorted = [...filtered].sort((a, b) => {
-    const { field, order } = sort;
+    const { sortField, sortOrder } = sort;
 
-    const fieldA = a[field];
-    const fieldB = b[field];
+    const fieldA = a[sortField];
+    const fieldB = b[sortField];
 
-    if (fieldA < fieldB) return -ORDER[order];
-    if (fieldA > fieldB) return ORDER[order];
+    if (fieldA < fieldB) return -ORDER[sortOrder];
+    if (fieldA > fieldB) return ORDER[sortOrder];
 
     return 0;
   });
@@ -41,6 +44,40 @@ export const useVehicles = ({ pagination = {}, filters = {}, sort = {} }) => {
   const pageStart = (page - 1) * pageSize;
   const pageEnd = pageStart + pageSize;
   const paginated = sorted.slice(pageStart, pageEnd);
+  const totalPageNumber = Math.ceil(sorted.length / pageSize);
 
-  return { vehicles: paginated };
+  return {
+    vehicles: paginated,
+    totalPageNumber: totalPageNumber,
+  };
 };
+
+export const useSetFavoutiteVehicle = (vehicle) => {
+  const { store, updateStore } = useStore();
+
+  const setFavourite = () => {
+    const allVehicles = store.vehicles || [];
+
+    const updatedVehicles = allVehicles.map((myVehicle) => {
+      if (myVehicle.licensePlate === vehicle.licensePlate) {
+        return { ...myVehicle, favourite: !myVehicle.favourite };
+      }
+      return myVehicle;
+    });
+
+    updateStore({ ...store, vehicles: updatedVehicles });
+  };
+
+  return setFavourite;
+};
+
+export const useGetVehicle = (licensePlate) => {
+  const { store, updateStore } = useStore();
+
+  const getVehicleByLicensePlate = () => {
+    const myVehicle = store.vehicles.find((vehicle) => vehicle.licensePlate === licensePlate);
+    return myVehicle;
+  }
+
+  return getVehicleByLicensePlate();
+}
