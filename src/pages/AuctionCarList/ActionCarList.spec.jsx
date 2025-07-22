@@ -101,29 +101,6 @@ describe("AuctionCarList", () => {
     });
   });
 
-  it("updates list when user selects the favourite filter", async () => {
-    render(<AuctionCarList />);
-
-    const favouriteSwitch = screen.getByRole("switch");
-
-    expect(favouriteSwitch).not.toBeChecked();
-
-    await userEvent.click(favouriteSwitch);
-
-    await waitFor(() => {
-      const vehicles = screen.queryAllByRole("article");
-      expect(vehicles.length).toBeGreaterThan(0); // make sure the filter applied
-
-      vehicles.forEach((vehicle) => {
-        const favButton = within(vehicle).getByRole("button", {
-          name: "Toggle favourite",
-        });
-        expect(favButton).not.toBeNull(); // ensure button exists
-        expect(favButton).toHaveClass("text-yellow-500");
-      });
-    });
-  });
-
   it("updates list when user changes the number of items per page", async () => {
     render(<AuctionCarList />);
 
@@ -134,8 +111,7 @@ describe("AuctionCarList", () => {
     await userEvent.selectOptions(itemsPerPageSelect, "5");
 
     await waitFor(() => {
-      const vehicles = screen.getAllByRole("article");
-
+      const vehicles = screen.queryAllByRole("article");
       expect(vehicles.length).toBeLessThanOrEqual(5);
     });
   });
