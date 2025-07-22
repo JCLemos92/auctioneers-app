@@ -1,6 +1,6 @@
-import { FavouriteButton } from './FavouriteButton';
-import { AuctionCountdown } from './AuctionCountdown';
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
+import { AuctionCountdown } from "./AuctionCountdown";
+import { FavouriteButton } from "./FavouriteButton";
 
 export const CarCard = ({ vehicle }) => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export const CarCard = ({ vehicle }) => {
   };
 
   return (
-    <div className="flex items-center justify-between gap-6 rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-300">
+    <article className="flex items-center justify-between gap-6 rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-300">
       <div className="flex items-center gap-6">
         <img
           className="w-48 h-32 bg-center bg-no-repeat bg-cover rounded-lg"
@@ -40,12 +40,16 @@ export const CarCard = ({ vehicle }) => {
       </div>
       <div className="flex flex-col items-end gap-3">
         <div className="text-right">
-          <span>{FavouriteButton({ vehicle })}</span>{' '}
+          <span>
+            <FavouriteButton vehicle={vehicle} />
+            </span>
           <p className="text-text-secondary text-sm font-normal leading-normal">
             Starting Bid
           </p>
           <p className="text-text-primary text-2xl font-bold leading-tight">
-            {vehicle.startingBid}
+            <output aria-label="starting-bid">
+              {vehicle.startingBid}
+            </output>
           </p>
         </div>
         <AuctionCountdown auctionDateTime={vehicle.auctionDateTime} />
@@ -57,7 +61,7 @@ export const CarCard = ({ vehicle }) => {
           View Details
         </button>
       </div>
-    </div>
+    </article>
   );
 };
 

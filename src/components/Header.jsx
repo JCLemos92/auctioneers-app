@@ -6,7 +6,7 @@ export const Header = () => {
       <div className="flex items-center gap-10">
         <div className="flex items-center gap-3 text-text-primary">
           <img src={logo} alt="Logo" className="w-8 h-8" />
-          <h2 className="text-text-primary text-2xl font-bold leading-tight tracking-[-0.015em]">
+          <h2 className="text-text-primary text-2xl font-bold leading-tight">
             Auctioneers
           </h2>
         </div>

@@ -1,10 +1,10 @@
-import { useVehicles } from '../../store/vehicles';
-import { usePagination } from './hooks/usePagination';
-import { useSortFilters } from './hooks/useSortFilters';
 import { AuctionCarListFilters } from '../../components/AuctionCarListFilters';
 import { AuctionCarListSort } from '../../components/AuctionCarListSort';
 import CarCard from '../../components/CarCard';
 import { PaginationButton } from '../../components/PaginationButton';
+import { useVehicles } from '../../store/vehicles';
+import { usePagination } from './hooks/usePagination';
+import { useSortFilters } from './hooks/useSortFilters';
 
 export const AuctionCarList = () => {
   const { pagination, nextPage, previousPage, handlePaginationParams } =
@@ -47,7 +47,6 @@ export const AuctionCarList = () => {
         ))}
       </div>
 
-      {/* Pagination Controls */}
       <div className="flex items-center justify-between">
         <PaginationButton onClick={previousPage} disabled={page <= 1}>
           Back

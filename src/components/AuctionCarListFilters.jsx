@@ -1,19 +1,18 @@
-import { useState } from 'react';
-import MODEL_FILTERS from '../../db/models.json';
-import { FaStar, FaRegStar } from 'react-icons/fa6';
+import { useState } from "react";
+import { FaRegStar, FaStar } from "react-icons/fa6";
+import MODEL_FILTERS from "../../db/models.json";
 
 const MAKE_FILTERS = [
-  { key: 'All Make', value: '' },
-  { key: 'Toyota', value: 'Toyota' },
-  { key: 'Ford', value: 'Ford' },
-  { key: 'Volkswagen', value: 'Volkswagen' },
-  { key: 'Audi', value: 'Audi' },
-  { key: 'Volvo', value: 'Volvo' },
-  { key: 'Citroen', value: 'Citroen' },
-  { key: 'BMW', value: 'BMW' },
-  { key: 'Mercedes-Benz', value: 'Mercedes-Benz' },
+  { key: "All Make", value: "" },
+  { key: "Toyota", value: "Toyota" },
+  { key: "Ford", value: "Ford" },
+  { key: "Volkswagen", value: "Volkswagen" },
+  { key: "Audi", value: "Audi" },
+  { key: "Volvo", value: "Volvo" },
+  { key: "Citroen", value: "Citroen" },
+  { key: "BMW", value: "BMW" },
+  { key: "Mercedes-Benz", value: "Mercedes-Benz" },
 ];
-
 
 export const AuctionCarListFilters = ({
   filter = {},
@@ -22,14 +21,14 @@ export const AuctionCarListFilters = ({
   onStartingBidChange,
   onFavouriteChange,
 }) => {
-  const [selectedMake, setSelectedMake] = useState('');
-  const [selectedModel, setSelectedModel] = useState('');
+  const [selectedMake, setSelectedMake] = useState("");
+  const [selectedModel, setSelectedModel] = useState("");
 
   const {
-    make = '',
-    model = '',
-    startingBid = '',
-    favourite = '',
+    make = "",
+    model = "",
+    startingBid = "",
+    favourite = "",
   } = filter || {};
 
   const handleMakeChange = (event) => {
@@ -46,7 +45,7 @@ export const AuctionCarListFilters = ({
 
   const handleBidChange = (e) => {
     const value = event.target.value;
-    onStartingBidChange(value === '' ? '' : Number(value));
+    onStartingBidChange(value === "" ? "" : Number(value));
   };
 
   const handleFavouriteChange = (event) => {
@@ -60,10 +59,9 @@ export const AuctionCarListFilters = ({
   return (
     <div className="w-full">
       <div className="flex gap-3 flex-wrap">
-
-        {/* Make Select */}
         <select
           className="flex items-center justify-center px-4 text-sm font-semibold text-gray-800 rounded-lg hover:bg-gray-200 transition cursor-pointer h-10"
+          aria-label="Make filter"
           value={make}
           onChange={handleMakeChange}
         >
@@ -76,6 +74,7 @@ export const AuctionCarListFilters = ({
 
         <select
           className="flex items-center justify-center px-4 text-sm font-semibold text-gray-800 rounded-lg hover:bg-gray-200 transition cursor-pointer h-10"
+          aria-label="Model filter"
           value={model}
           onChange={handleModelChange}
         >
@@ -89,6 +88,7 @@ export const AuctionCarListFilters = ({
 
         <input
           type="number"
+          aria-label="Min bid filter"
           placeholder="Min Bid"
           className="flex items-center justify-center px-4 text-sm font-semibold text-gray-800 rounded-lg hover:bg-gray-200 transition cursor-pointer h-10"
           value={startingBid}
@@ -104,12 +104,12 @@ export const AuctionCarListFilters = ({
             aria-checked={filter.favourite}
             onClick={() => handleFavouriteChange(!filter.favourite)}
             className={`relative inline-flex h-6 w-11 items-center rounded-full transition ${
-              filter.favourite ? 'bg-gray-400' : 'bg-gray-200'
+              filter.favourite ? "bg-gray-400" : "bg-gray-200"
             }`}
           >
             <span
               className={`justify-self-end inline-block h-4 w-4 transform rounded-full bg-white transition flex items-center justify-center ${
-                filter.favourite ? 'translate-x-6' : 'translate-x-1'
+                filter.favourite ? "translate-x-6" : "translate-x-1"
               }`}
             >
               {filter.favourite ? (

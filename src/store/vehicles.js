@@ -52,7 +52,7 @@ export const useVehicles = (pagination = {}, filters = {}, sort = {}) => {
   };
 };
 
-export const useSetFavoutiteVehicle = (vehicle) => {
+export const useSetFavouriteVehicle = (vehicle) => {
   const { store, updateStore } = useStore();
 
   const setFavourite = () => {
@@ -75,9 +75,11 @@ export const useGetVehicle = (licensePlate) => {
   const { store, updateStore } = useStore();
 
   const getVehicleByLicensePlate = () => {
-    const myVehicle = store.vehicles.find((vehicle) => vehicle.licensePlate === licensePlate);
+    const myVehicle = store.vehicles.find(
+      (vehicle) => vehicle.licensePlate === licensePlate,
+    );
     return myVehicle;
-  }
+  };
 
   return getVehicleByLicensePlate();
-}
+};

@@ -14,7 +14,6 @@ export const CarDetails = () => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 bg-white p-6 rounded-xl shadow-md">
-      {/* Left: Images */}
       <div className="g:w-1/2 grid grid-col gap-4">
         <img
           src={image1}
@@ -35,7 +34,6 @@ export const CarDetails = () => {
         </div>
       </div>
 
-      {/* Right: Car Characteristics */}
       <div className="lg:w-1/2 flex flex-col gap-6">
         <div>
           <div className="flex items-center justify-between mb-2">
@@ -65,7 +63,6 @@ export const CarDetails = () => {
           />
         </div>
 
-        {/* Specification */}
         <div>
           <h3 className="text-lg font-semibold text-gray-700 mb-1">
             Specification
@@ -112,7 +109,6 @@ export const CarDetails = () => {
             />
           </div>
 
-          {/* Ownership */}
           <div>
             <h3 className="text-lg font-semibold text-gray-700 mb-1">
               Ownership
@@ -136,7 +132,6 @@ export const CarDetails = () => {
             </div>
           </div>
 
-          {/* Equipment */}
           <div>
             <h3 className="text-lg font-semibold text-gray-700 mb-1">
               Equipment

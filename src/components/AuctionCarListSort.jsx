@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const SORT_FIELDS = [
   { label: '', value: undefined},
   { label: 'Make', value: 'make' },
@@ -48,8 +46,9 @@ export const AuctionCarListSort = ({
 
         <select
           className="flex items-center justify-center px-4 text-sm font-semibold text-gray-800 rounded-lg hover:bg-gray-200 transition cursor-pointer h-11"
+          aria-label="Sort field"
           value={sortField ?? ''}
-          onChange={(e) => handleSortFieldChange(e.target.value)}
+          onChange={(event) => handleSortFieldChange(event.target.value)}
         >
           {SORT_FIELDS.map(({ label, value }) => (
             <option key={value} value={value}>
@@ -60,6 +59,7 @@ export const AuctionCarListSort = ({
 
         <button
           type="button"
+          aria-label="Sort order"
           value={sortOrder}
           onClick={() => handleSortOrderChange(sortOrder)}
           className="flex items-center justify-center px-4 text-sm font-semibold text-gray-800 rounded-lg hover:bg-gray-200 transition cursor-pointer h-11"
@@ -78,7 +78,7 @@ export const AuctionCarListSort = ({
             id="PageSize"
             className="flex items-center justify-center px-4 text-sm font-semibold text-gray-800 rounded-lg hover:bg-gray-200 transition cursor-pointer h-11"
             value={pageSize}
-            onChange={(e) => handlePaginationChange(parseInt(e.target.value))}
+            onChange={(event) => handlePaginationChange(parseInt(event.target.value))}
           >
             {ITEMS_PER_PAGE_OPTIONS.map((option) => (
               <option key={option} value={option}>
