@@ -1,0 +1,10 @@
+{
+  "Toyota": ["C-HR", "Corolla"],
+  "Ford": ["Fiesta", "Focus", "Focus C-Max"],
+  "Volkswagen": ["Golf", "Passat", "Polo"],
+  "Audi": ["A3", "A4"],
+  "Volvo": ["C30", "C40", "V40"],
+  "Citroen": ["C3 Aircross", "C3 Origin", "C5 Aircross"],
+  "BMW": ["1 Series", "3 Series"],
+  "Mercedes-Benz": ["A-Class Hatchback", "A-Class Saloon", "B-Class"]
+}
